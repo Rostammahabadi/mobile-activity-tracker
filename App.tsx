@@ -1,5 +1,5 @@
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import Home from './screens/Home';
 import AsyncStorage from '@react-native-async-storage/async-storage'
@@ -7,7 +7,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 export default function App() {
   const [user, setUser] = React.useState(Object);
 
-  const getMyObject = async () => {
+  const getUserObject = async () => {
     const previousUser = await AsyncStorage.getItem('user');
     if(previousUser){
       setUser(JSON.parse(previousUser))
@@ -20,28 +20,13 @@ export default function App() {
     }
   };
 
-  const saveUserInfo = async (user: any) => {
-    try {
-      await AsyncStorage.setItem('user', JSON.stringify(user))
-    } catch (e) {
-      console.log(e)
-    }
-  };
-
   useEffect(() => {
-    getMyObject();
+    getUserObject();
   },[]);
-
-  const handleOnChange = (childData: Object) => {
-    let date: Date = new Date();
-    let stringDate = date.toString();
-    user[stringDate] = childData
-    saveUserInfo(user);
-  }
 
   return (
     <Home
-      onPress={handleOnChange}
+      user={user}
     />
   );
 }
