@@ -2,20 +2,21 @@ import { PickerIOS } from "@react-native-picker/picker";
 import React, { useState } from "react";
 import { Button, SafeAreaView, StyleSheet, Text } from "react-native";
 
-const ACTIVITIES= ['Running', 'Swimming', 'Sports', 'Workout', 'Yoga', 'Meditation']
-const DURATIONS = ['10 min', '15 min', '30 min', '45 min', '60 min']
-const EMOTIONS = ['Great!', 'Good', 'Challenging', 'Uplifting', 'Energizing']
-export default function Home() {
+const ACTIVITIES= [ "", 'Running', 'Swimming', 'Sports', 'Workout', 'Yoga', 'Meditation']
+const DURATIONS = [ "", '10 min', '15 min', '30 min', '45 min', '60 min']
+const EMOTIONS = [ "", 'Great!', 'Good', 'Challenging', 'Uplifting', 'Energizing']
+
+export default function Home({onPress}: any) {
     const [ activity, setActivity ] = useState("");
     const [ duration, setDuration ] = useState("");
     const [ emotion, setEmotion ] = useState("");
 
     function handleOnPress() {
-
+        onPress({activity, duration, emotion})
     }
     return (
         <SafeAreaView>
-            <Text style={{alignSelf:"center",fontSize:30, paddingTop:20}}>Select an activity</Text>
+            <Text style={{alignSelf:"center",fontSize:30, marginTop:20}}>Select an activity</Text>
             <PickerIOS
             selectedValue={activity}
             onValueChange={(value: any) => {
