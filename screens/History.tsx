@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import { SafeAreaView, ScrollView, StyleSheet, Text } from "react-native";
-import { List } from 'react-native-paper'
 import Accordion from "../components/Accordion";
 import { UserContext } from "../UserContext";
 
@@ -17,13 +16,13 @@ export default function HistoryScreen() {
 
   let distinctMonths = [...new Set(months)]
 
-  console.log(distinctMonths)
   return (
     <ScrollView>
       <SafeAreaView>
         {
           distinctMonths.map((month, num) => {
             return <Accordion
+                      key={num}
                       title={month}
                       data={user}
                       month={monthNumber[num]}
