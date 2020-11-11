@@ -30,7 +30,9 @@ This is a front end mobile application built in React Native with expo that keep
 npm install npm@latest -g
 ```
 * TypeScript
-`npm install -g typescript`
+```sh
+npm install -g typescript
+```
 
 * XCode 
 [XCode](https://apps.apple.com/us/app/xcode/id497799835?mt=12)
@@ -56,6 +58,6 @@ The user enters the application, at that point I use AsyncStorage to check if th
 
 ## Contact
 
-Your Name - [Rostam Mahabadi](https://www.linkedin.com/in/rostam-mahabadi/) 
+ [Rostam Mahabadi](https://www.linkedin.com/in/rostam-mahabadi/) 
 
 
