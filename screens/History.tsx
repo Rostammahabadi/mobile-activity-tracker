@@ -1,13 +1,17 @@
 import React, { useContext } from "react";
-import { SafeAreaView, ScrollView, StyleSheet, Text } from "react-native";
+import { Platform, SafeAreaView, ScrollView, StyleSheet, Text } from "react-native";
 import Accordion from "../components/Accordion";
 import { UserContext } from "../UserContext";
 
 export default function HistoryScreen() {
   const user: any = useContext(UserContext);
 
-  let months = Object.keys(user).map((key) => {
+  let months = Platform.OS === 'ios' ? Object.keys(user).map((key) => {
     return new Date(key).toLocaleString('default', { month: 'long'});
+  }) : 
+  Object.keys(user).map((key) => {
+    let date = new Date(key)
+    return date.toDateString().split(' ')[1]
   })
 
   let monthNumber = Object.keys(user).map((key) => {

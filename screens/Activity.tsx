@@ -1,7 +1,7 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { PickerIOS } from "@react-native-picker/picker";
+import { Picker, PickerIOS } from "@react-native-picker/picker";
 import React, { useContext, useState } from "react";
-import { Button, SafeAreaView, StyleSheet, Text } from "react-native";
+import { Button, SafeAreaView, StyleSheet, Text, Platform } from "react-native";
 import { UserContext } from "../UserContext";
 
 const ACTIVITIES= [ "", 'Running', 'Swimming', 'Sports', 'Workout', 'Yoga', 'Meditation']
@@ -21,7 +21,7 @@ export default function ActivityScreen() {
     user[stringDate] = childData
     saveUserInfo();
     alert('Activity Saved!')
-  }
+  };
 
   function handleOnChange() {
     if(!activity || !duration || !emotion){
@@ -30,8 +30,7 @@ export default function ActivityScreen() {
     } else {
       addActivity();
     }
-  }
-
+  };
   
 
   const saveUserInfo = async () => {
@@ -42,50 +41,53 @@ export default function ActivityScreen() {
     }
   };
 
+  const PICKER = Platform.OS === 'ios' ? PickerIOS : Picker;
+
+  
   return (
       <SafeAreaView>
           <Text style={{alignSelf:"center",fontSize:30}}>Select an activity</Text>
-          <PickerIOS
+          <PICKER
           selectedValue={activity}
           onValueChange={(value: any) => {
               setActivity(value);
           }}>
           {ACTIVITIES.map((value) => (
-              <PickerIOS.Item
+              <PICKER.Item
               key={value}
               value={value}
               label={value}
               />
           ))}
-          </PickerIOS>
+          </PICKER>
           <Text style={styles.titles}>How long was the activity?</Text>
-          <PickerIOS
+          <PICKER
           selectedValue={duration}
           onValueChange={(value: any) => {
               setDuration(value);
           }}>
           {DURATIONS.map((value) => (
-              <PickerIOS.Item
+              <PICKER.Item
               key={value}
               value={value}
               label={value}
               />
           ))}
-          </PickerIOS>
+          </PICKER>
           <Text style={styles.titles}>How did it feel?</Text>
-          <PickerIOS
+          <PICKER
           selectedValue={emotion}
           onValueChange={(value: any) => {
               setEmotion(value);
           }}>
           {EMOTIONS.map((value) => (
-              <PickerIOS.Item
+              <PICKER.Item
               key={value}
               value={value}
               label={value}
               />
           ))}
-          </PickerIOS>
+          </PICKER>
           <Button
           title="Submit"
           onPress={handleOnChange}
