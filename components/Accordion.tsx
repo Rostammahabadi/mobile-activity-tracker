@@ -7,7 +7,7 @@ export default function Accordion({title, data, month}: any) {
   let filteredByMonth = keys
   .filter(key =>
       new Date(key).getMonth() == month)
-  console.log(filteredByMonth)
+      
   return (
     <List.Section>
       <List.Accordion
