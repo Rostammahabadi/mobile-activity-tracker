@@ -10,10 +10,14 @@
 * [Contact](#contact)
 
 ## About The Project
-
+## IOS
 ![](images/Home.png)
 ![](images/Activity.png)
 ![](images/History.png)
+## Android
+![](images/Home_Android.png)
+![](images/Activity_Android.png)
+![](images/History_Android.png)
 
 This is a front end mobile application built in React Native with expo that keeps track of your physical activities. I made this project to learn React Native and build out a project in it. I used TypeScript in the project because I enjoy type safe features with autocomplete and realize the value in seeing your mistake before making it so things are well thought out beforehand. 
 
@@ -37,6 +41,9 @@ npm install -g typescript
 * XCode 
 [XCode](https://apps.apple.com/us/app/xcode/id497799835?mt=12)
 
+* Android Studio
+[Android Studio](https://developer.android.com/studio)
+
 
 ## Getting Started / Installation
 
@@ -48,7 +55,7 @@ npm install -g typescript
 6. Go to expo and follow their download instructions [Expo](https://expo.io/)
 7. Download Xcode to run in an iphone simulator
 8. run `npm start` in the terminal
-9. Once the expo browser opens up, click on 'Run on IOS Simulator'
+9. Once the expo browser opens up, click on 'Run on IOS Simulator' or open up Android Studio and run any android device and click 'Run on Android device/emulator'
 10. Have fun!
 
 
